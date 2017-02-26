@@ -3,6 +3,7 @@ from short_id_v0 import convert_short_id as convert_short_id_v0
 from short_id_v1 import convert_short_id as convert_short_id_v1
 from short_id_v2 import convert_short_id as convert_short_id_v2
 from short_id_v3 import convert_short_id as convert_short_id_v3
+from short_id_v4 import convert_short_id as convert_short_id_v4
 
 from uuid import uuid1, uuid4, UUID
 
@@ -30,8 +31,8 @@ def print_numbers_as_uuid(numbers, display_uuid=True):
 
 # Setting
 
-times = 1000000
-convert_method = convert_short_id_v3
+times = 2000000
+convert_method = convert_short_id_v4
 uuid_method = uuid4
 display_uuid = True
 
@@ -67,7 +68,7 @@ if __name__ == '__main__':
                 max_count = count
                 max_idstr = key
 
-    print("\033[94m\033[4mverified {} {} with '{}'\033[0m".format(total_times, uuid_method.__name__, convert_method.__name__))
+    print("\033[94m\033[4mverified {} {} with '{}'\033[0m".format(total_times, uuid_method.__name__, convert_method.__doc__.strip()))
     if max_idstr is None:
         print("no collision detected")
     else:
