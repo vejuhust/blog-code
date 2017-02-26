@@ -4,6 +4,7 @@ from short_id_v1 import generate_short_id as generate_short_id_v1
 from short_id_v2 import generate_short_id as generate_short_id_v2
 from short_id_v3 import generate_short_id as generate_short_id_v3
 from short_id_v4 import generate_short_id as generate_short_id_v4
+from short_id_v5 import generate_short_id as generate_short_id_v5
 
 from datetime import datetime
 
@@ -93,8 +94,8 @@ def output_result_as_table(times = 1):
     print()
 
 
-version_count = 5
-times = 10000
+version_count = 6
+times = 100000
 column_width = 16
 
 

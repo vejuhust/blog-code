@@ -11,7 +11,7 @@ def convert_short_id_v4(num):
 
 
 def convert_short_id_v5(num):
-    """ Short ID converter - v5: Urandom in Base62 """
+    """ Short ID converter - v5: Base62-Encoded Urandom """
     if num <= 0:
         result = "0"
     else:
@@ -24,7 +24,7 @@ def convert_short_id_v5(num):
     return result
 
 
-times = 100000
+times = 1000000
 
 if __name__ == '__main__':
     print("verify v4 & v5 for {} times".format(times))

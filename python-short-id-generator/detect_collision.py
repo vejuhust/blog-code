@@ -4,6 +4,7 @@ from short_id_v1 import convert_short_id as convert_short_id_v1
 from short_id_v2 import convert_short_id as convert_short_id_v2
 from short_id_v3 import convert_short_id as convert_short_id_v3
 from short_id_v4 import convert_short_id as convert_short_id_v4
+from short_id_v5 import convert_short_id as convert_short_id_v5
 
 from uuid import uuid1, uuid4, UUID
 
@@ -32,7 +33,7 @@ def print_numbers_as_uuid(numbers, display_uuid=True):
 # Setting
 
 times = 2000000
-convert_method = convert_short_id_v4
+convert_method = convert_short_id_v5
 uuid_method = uuid4
 display_uuid = True
 
