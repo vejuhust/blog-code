@@ -12,3 +12,8 @@ def generate_short_id():
 def convert_short_id(num):
     """ Short ID converter - v4: Urandom """
     return generate_short_id()
+
+
+def generate_short_id_raw():
+    """ Short ID generator - v4 - without any encoding """
+    return unpack("<Q", urandom(8))[0]

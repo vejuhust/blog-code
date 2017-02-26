@@ -8,10 +8,9 @@ def get_version_tag(num):
 
 def measure_time_cost_by_version(version_number, times):
     tag = get_version_tag(version_number)
-    func_name = "generate_short_id_{}".format(tag)
-    code_setup = "from short_id_{} import generate_short_id".format(tag)
+    code_setup = "from short_id_{} import generate_short_id{} as generate_short_id".format(tag, "_raw" if measure_raw_id else "")
     code_use = "generate_short_id()"
-    result_list = repeat(setup=code_setup, stmt=code_use, repeat=5, number=times)
+    result_list = repeat(setup=code_setup, stmt=code_use, repeat=repeat_times, number=times)
     result_min = min(result_list)
     avg_usec = result_min / times * 1000000
     return result_min, avg_usec
@@ -37,7 +36,9 @@ def output_result_as_table(result_dict, times_list):
 
 
 version_count = 5
-times_list = [ 1, 10, 100, 1000, 10000 ]
+measure_raw_id = True
+times_list = [ 10000, 50000, 100000, 200000, 300000 ]
+repeat_times = 5
 column_width = 16
 
 
