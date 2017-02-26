@@ -5,7 +5,7 @@ from struct import unpack
 
 
 def generate_short_id():
-    """ Short ID generator - v5: Urandom in Base62 """
+    """ Short ID generator - v5: Base62-Encoded Urandom """
     num = unpack("<Q", urandom(8))[0]
     if num <= 0:
         result = "0"
@@ -20,7 +20,7 @@ def generate_short_id():
 
 
 def convert_short_id(num):
-    """ Short ID converter - v5: Urandom in Base62 """
+    """ Short ID converter - v5: Base62-Encoded Urandom """
     return generate_short_id()
 
 

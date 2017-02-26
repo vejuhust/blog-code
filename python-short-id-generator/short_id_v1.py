@@ -4,7 +4,7 @@ from basehash import base62
 
 
 def generate_short_id():
-    """ Short ID generator - v1: Half Unshuffle UUID1 """
+    """ Short ID generator - v1: Half Unshuffled UUID1 """
     num = uuid1().int
     mask = 0x55555555555555555555555555555555
     x = (num ^ (num >> 1)) & mask
@@ -18,7 +18,7 @@ def generate_short_id():
 
 
 def convert_short_id(num):
-    """ Short ID converter - v1: Half Unshuffle UUID1 """
+    """ Short ID converter - v1: Half Unshuffled UUID1 """
     mask = 0x55555555555555555555555555555555
     x = (num ^ (num >> 1)) & mask
     x = (x | (x >> 1))  & 0x33333333333333333333333333333333
