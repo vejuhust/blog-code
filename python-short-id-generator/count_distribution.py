@@ -64,43 +64,45 @@ def aggregate_result(version_count):
 
 def print_list_as_table_row(data_list):
     for item in data_list:
-        print("| {:8}".format(item), end=" ")
+        print("| {:MAX}".replace("MAX", str(column_width)).format(item), end=" ")
     print("|")
 
 
-def output_result_as_table(show_percent = False, times = 1):
+def print_clean_float(num):
+    return "{:.3f}".format(num).rstrip('0').rstrip('.')
+
+
+def output_result_as_table(times = 1):
     version_list = sorted([ tag for tag in sorted(results) ])
     idlen_list = sorted([ idlen for idlen in sorted(results[version_list[0]]) ])
-    print_list_as_table_row([ "Version" ] + idlen_list)
-    column_count = len(idlen_list) + 1
-    print("|:--------:" * column_count + "|")
+    table_header_row = [ "ver." ] + [ "len={}".format(idlen) for idlen in idlen_list ] + ["avg. len."]
+    print_list_as_table_row(table_header_row)
+    column_count = len(table_header_row)
+    print(("|:" + "-"*column_width +  ":" )* column_count + "|")
     for version in version_list:
         result_line = [ version ]
+        average_len = 0
         for idlen in sorted(results[version]):
             count = results[version][idlen]
-            if show_percent:
-                if count == 0:
-                    result_item = "0"
-                elif count == times:
-                    result_item = "100%"
-                else:
-                    result_item = "{:.3f}%".format(count / times * 100)
-            else:
-                result_item = "{:d}".format(count)
+            rate = count / times
+            average_len += idlen * rate
+            result_item = "{:d} / ".format(count) + print_clean_float(rate * 100) + "%"
             result_line.append(result_item)
+        result_line.append(print_clean_float(average_len))
         print_list_as_table_row(result_line)
     print()
 
 
 version_count = 5
 times = 10000
+column_width = 16
 
 
 if __name__ == '__main__':
     for version in range(version_count):
         print("[{}] start {} - {} times".format(datetime.now().isoformat(), get_version_tag(version), times))
         analyze_special_version(version, times)
+    print()
 
     aggregate_result(version_count)
-    output_result_as_table()
-    output_result_as_table(True, times)
+    output_result_as_table(times)
