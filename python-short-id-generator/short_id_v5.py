@@ -12,7 +12,7 @@ def generate_short_id():
     else:
         alphabet = string.digits + string.ascii_uppercase + string.ascii_lowercase
         key = []
-        while num:
+        while num > 0:
             num, rem = divmod(num, 62)
             key.append(alphabet[rem])
         result = "".join(reversed(key))
