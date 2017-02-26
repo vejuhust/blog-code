@@ -18,5 +18,5 @@ Source Code for **[Generate Short Url-Friendly Unique ID in Python](http://yewei
 * **detect_collision.py** - Check how often a collision occurs
 * **measure_time_cost.py** - Measure execution times of v0~4
 * **measure_time_cost2.py** - Measure execution times of v4 & v5
-* **verify_base62.py** - Verify if Base62 encoding is the same in v4 & v5
-* **compress_right.py** - Implementation of [parallel bit extract (PEXT)](https://en.wikipedia.org/wiki/Bit_Manipulation_Instruction_Sets#Parallel_bit_deposit_and_extract) instruction
+* **verify_base62.py** - Verify if Base62 encoder is the same in v4 & v5
+* **compress_right.py** - Implementation of [Parallel Bit Extract (PEXT)](https://en.wikipedia.org/wiki/Bit_Manipulation_Instruction_Sets#Parallel_bit_deposit_and_extract) instruction
