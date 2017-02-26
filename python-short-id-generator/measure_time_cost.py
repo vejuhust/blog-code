@@ -1,5 +1,6 @@
 
 from timeit import repeat
+from datetime import datetime
 
 
 def get_version_tag(num):
@@ -36,8 +37,8 @@ def output_result_as_table(result_dict, times_list):
 
 
 version_count = 5
-measure_raw_id = True
-times_list = [ 10000, 50000, 100000, 200000, 300000 ]
+measure_raw_id = False
+times_list = [ 10000, 50000, 100000, 200000, 500000 ]
 repeat_times = 5
 column_width = 16
 
@@ -46,6 +47,7 @@ if __name__ == '__main__':
     result_dict = {}
     for times in times_list:
         for version in range(version_count):
+            print("[{}] start {} - {} times".format(datetime.now().isoformat(), get_version_tag(version), times))
             total_time, avg_time = measure_time_cost_by_version(version, times)
             tag = get_version_tag(version)
             if tag not in result_dict:
