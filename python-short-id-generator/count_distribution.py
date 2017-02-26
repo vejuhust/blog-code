@@ -14,7 +14,7 @@ def get_version_tag(num):
 
 
 idstr_dict = {}
-def count_record_id(idstr, tag):
+def count_record_id(tag, idstr):
     idlen = len(idstr)
     if idlen not in idstr_dict:
         idstr_dict[idlen] = []
@@ -22,7 +22,7 @@ def count_record_id(idstr, tag):
 
 
 collision_dict = {}
-def check_id_unique(idstr, tag):
+def check_id_unique(tag, idstr):
     if tag not in collision_dict:
         collision_dict[tag] = set()
     collision_set = collision_dict[tag]
@@ -37,8 +37,8 @@ def analyze_special_version(version_number, times):
     count = 0
     while (count < times):
         idstr = globals()[func_name]()
-        if check_id_unique(idstr, tag):
-            count_record_id(idstr, tag)
+        if check_id_unique(tag, idstr):
+            count_record_id(tag, idstr)
             count += 1
 
 
